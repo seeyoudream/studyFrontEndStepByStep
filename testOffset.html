@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!--[if IE]>
+<script type="text/javascript" src="firebug-lite/build/firebug-lite.js"></script>
+<![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>tets</title>
+<style type="text/css">
+*{ margin: 0; padding: 0; }
+.w50 {width: 50px;}
+.w900 {width: 900px;}
+.w1000 {width: 1000px;}
+.w1100 {width: 1100px;}
+.w1200 {width: 1200px;}
+.w1300 {width: 1300px;}
+.w1400 {width: 1400px;}
+.w1500 {width: 1500px;}
+
+.h300 {height: 300px;}
+.h400 {height: 400px;}
+.h500 {height: 500px;}
+.h600 {height: 600px;}
+.h700 {height: 700px;}
+.h800 {height: 800px;}
+.h900 {height: 900px;}
+.h1000 {height: 1000px;}
+.h1100 {height: 1100px;}
+
+.oflscroll {overflow: scroll;}
+.fl {float:left;}
+.ml55 {margin-left: 55px;}
+.inline {display: inline-block;}
+.block {display: block;}
+
+.abso {position: absolute;}
+.reti {position: relative;}
+.stc {position: static;}
+.fixed {position: fixed;}
+
+.border3 {border: 3px solid yellow;}
+.border6 {border: 6px solid yellow;}
+.border7 {border: 7px solid black;}
+.border10 {border: 10px solid gray;}
+.border13 {border: 13px solid purple;}
+
+
+body {background-color: #785adf; padding:30; margin: 10px;}
+
+.bd-wrap {padding: 30px; margin: 10px; background-color: #CCCCCC;}
+
+.wrap-child {width: 308px; height: 300px; padding: 30px; margin: 10px; border: 9px solid purple; background-color: green;}
+
+.in-2-sub {width:100px;height:200px;background-color:gray; padding: 6px; margin:7px; border: 5px solid yellow;}
+
+.tid-child-li {width: 120px; height: 36px; background-color: blue; padding: 6px; margin:10px; border-top-width: 15px;}
+
+.spn {height: 30px; border: 5px solid black;}
+ul.tt li {border: 7px solid black;}
+</style>  
+
+</head>
+
+<body class="w1500 h900 oflscroll border7" id="bd">
+<div id="body-wrap" class="w1200 h1100 border15 bd-wrap">
+	<div id="wrap-child1" class="wrap-child fl">
+	    <div class="in-2-sub fl">in-2-sub1</div>
+	    <div class="in-2-sub fl">in-2-sub2</div>
+	</div>
+	<div class="wrap-child reti fl" id="wrap-child2">
+		<div class="fl tid-child-li oflscroll border3">wrap-child2  wrap-child2wrap-child2wrap-child2wrap-child2wrap-child2wrap-child2wrap-child2</div>
+		<div class="fl tid-child-li oflscroll border3">wrap-child2</div>
+		<table id="tbl">
+			<tr id="tr1">
+				<th id="th1"><span class="spn">shuzi</th>
+				<th id="th2"><span class="spn">shuzi2</th>
+			</tr>
+			<tr>
+				<td id="td3"><div class="w50" id="td-div"><span class="spn stc">888888888888</div></td>
+				<td>99999</td>
+			</tr>
+		</table>
+	</div>
+    <div class="wrap-child fl" id="wrap-child3">
+        <ul id="tid-parent">
+	        <li id= "tid">
+		        <ul id="tid-child" class="tt">
+			        <li class="tid-child-li" id="tid-child-li1"><span class="border6">span</span></li>
+					<li class="tid-child-li" id="tid-child-li2"><strong class="border6 block">strong</strong></li>
+					<li class="tid-child-li" id="tid-child-li3"><i class="w50 border7 block">iiiiii</i></li>
+					<li class="tid-child-li" id="tid-child-li4"><a href="javascript:void();" class="w50 border7">a</a></li>
+					<li class="tid-child-li" id="tid-child-li5"><b class="w50 border7 block">bbbb</b></li>
+					<li class="tid-child-li" id="tid-child-li6"><em class="w50 border7 block">em</em></li>
+					<li class="tid-child-li" id="tid-child-li7">
+						<label class="w50 border7">label</label><input type="text" class="w50 border7" value="input-text" />
+					</li> 
+					<li class="tid-child-li" id="tid-child-li8"><img class="border7" id="img" src="http://www.gzjingy.com/img/brandType/tmall.png"/></li>
+					<li class="tid-child-li" id="tid-child-li9"><textarea class="w50 borer7" >texterea</textarea></li>
+					<li class="tid-child-li" id="tid-child-li10">
+						<select class="w50 boder7">
+							<option>999</option>
+					    </select>
+				    </li>
+				</ul>
+			</li>
+			<li id= "tid-2"><span>555</span></li>
+			<li id= "tid-3"><span>333</span></li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript" >
+var bind = function (elem, type, fn) {
+    if(elem.attachEvent) {
+        elem.attachEvent("on" + type,fn);
+        bind = function(elem, type, fn) {elem.attachEvent("on" + type,fn)};
+    } else if(elem.addEventListener) {
+        elem.addEventListener(type, fn, true);
+        bind = function(elem, type, fn) {elem.addEventListener(type, fn, true)};
+    } else {
+        elem["on" + type] = fn;
+        bind = function(elem, type, fn) { elem["on" + type] = fn};
+    }
+};
+bind(document.body, "click", testE);
+
+console.log("             document.body.scrollLeft: " + document.body.scrollLeft + ", scrollTop: " + document.body.scrollTop);
+console.log("  document.documentElement.scrollLeft: " + document.documentElement.scrollLeft + ", scrollTop: " + document.documentElement.scrollTop)
+console.log("                   window.pageXOffset: " + window.pageXOffset + ", window.pageYOffset: " + window.pageYOffset);
+console.log("                   window.innerHeight: " + window.innerHeight + ", window.innerWidth: " + window.innerWidth);
+console.log("document.documentElement.clientHeight: " + document.documentElement.clientHeight + ",       clientWidth: " + document.documentElement.clientWidth);
+console.log("           document.body.clientHeight: " + document.body.clientHeight + ",    body.clientWidth: " + document.body.clientWidth);
+
+function testE(e) {
+	var e = e || window.event,
+	    elem = e.target || e.srcElement,
+	    currOffsetParent = elem.offsetParent,
+	    parentTh = 0;
+	console.log("click start......" + elem.id + ", nodeName: " + elem.nodeName);
+	console.log("        e.screenX: " + e.screenX + ", e.screenY: " + e.screenY);
+	console.log("        e.clientX: " + e.clientX + ", e.clientY: " + e.clientY);
+	console.log("              e.x: " + e.x + ",      e.y: " + e.y);
+	console.log("          e.pageX: " + e.pageX + ",   e.pageY: " + e.pageY);
+	while (currOffsetParent) {
+		parentTh ++;
+		console.log(parentTh + "-offsetParent: " + currOffsetParent.id + ", offsetLeft: " + currOffsetParent.offsetLeft + ", offsetTop: " + currOffsetParent.offsetTop);
+		currOffsetParent = currOffsetParent.offsetParent;
+		if (!currOffsetParent) {
+			console.log("no offsetParent now!");
+		}
+	}
+	console.log(" elem.offsetWidth: " + elem.offsetWidth + ", elem.offsetHeight: " + elem.offsetHeight);
+	console.log("  elem.offsetLeft: " + elem.offsetLeft + ", elem.offsetTop: " + elem.offsetTop);
+	console.log(" elem.scrollWidth: " + elem.scrollWidth + ", elem.scrollHeight: " + elem.scrollHeight);
+	console.log("  elem.scrollLeft: " + elem.scrollLeft + ", elem.scrollTop: " + elem.scrollTop);
+	console.log("  elem.clientLeft: " + elem.clientLeft + ", elem.clientTop: " + elem.clientTop);
+	console.log(" elem.clientWidth: " + elem.clientWidth + ", elem.clientHeight: " + elem.clientHeight);
+}
+
+</script>
+</body>
+</html>
